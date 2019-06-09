@@ -15,8 +15,8 @@ import React from 'react'
 import { contributionMenu, paths } from 'routes/paths'
 import { DateDTO } from 'types/common'
 import { formatDateInWordsWithWeekdayAndTime } from 'utils/formatDate'
-import { StoresType } from '../_app'
 import { withNamespaces } from '../../i18n'
+import { StoresType } from '../_app'
 
 export type IntlTextType = {
   intlKey: string;
@@ -41,6 +41,11 @@ export class ProposingATalk extends React.Component<{ stores: StoresType }> {
     return {
         namespacesRequired: ['contribute'],
     }
+  }
+
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
   }
 
   render() {
@@ -105,7 +110,7 @@ export class ProposingATalk extends React.Component<{ stores: StoresType }> {
                     <Td>
                       {desc
                           ? <IntlText intlKey={desc.intlKey}>{desc.defaultText}</IntlText>
-                          : formatDateInWordsWithWeekdayAndTime(date!)
+                          : formatDateInWordsWithWeekdayAndTime(date)
                       }
                     </Td>
                   </Tr>

@@ -27,8 +27,9 @@ export default class SponsorForm extends React.Component<{ stores: StoresType }>
   }
 
   async componentDidMount() {
-    const { sponsorStore } = this.props.stores
+    const { sponsorStore, scheduleStore } = this.props.stores
     if (!sponsorStore.isInitialized) sponsorStore.initialize()
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
   }
 
   render() {

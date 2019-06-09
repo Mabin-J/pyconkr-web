@@ -29,6 +29,11 @@ export class Ticket extends React.Component<PropsType> {
       }
   }
 
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   renderTicketsTablesRow = () => {
       return (
           this.tickets && this.tickets.map((ticket) => {

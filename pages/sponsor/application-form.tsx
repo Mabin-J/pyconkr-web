@@ -24,6 +24,12 @@ import {paths} from '../../routes/paths'
 export default class ApplicationForm extends React.Component<{ 
   stores: StoresType;
 }> {
+
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   render() {
     const { stores } = this.props
     const { authStore, sponsorStore } = this.props.stores

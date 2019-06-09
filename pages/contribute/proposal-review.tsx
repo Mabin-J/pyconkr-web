@@ -31,6 +31,11 @@ export class ProposalReview extends React.Component<PropsType> {
     }
   }
 
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   renderProposalReviewForm () {
     const { stores } = this.props
     const isAuthStoreInitialized = stores.authStore.isInitialized

@@ -25,6 +25,11 @@ export type IndexPagePropsType = {
 @inject('stores')
 @observer
 export default class CFPDetailedGuide extends React.Component<{ stores: StoresType }> {
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   render() {
     const { keynoteRecommendationStartAt, keynoteRecommendationFinishAt } = this.props.stores.scheduleStore.schedule
     const schedule = [{

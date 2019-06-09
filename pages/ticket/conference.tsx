@@ -40,6 +40,7 @@ export class ConferenceTicket extends React.Component<PageDefaultPropsType> {
   async componentDidMount() {
     const { stores } = this.props
     if (!stores.ticketStore.isInitialized) stores.ticketStore.initialize()
+    if (!stores.scheduleStore.isInitialized) stores.scheduleStore.initialize()
   }
 
   render() {

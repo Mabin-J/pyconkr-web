@@ -21,6 +21,11 @@ export type PropsType = {
 export default class CFPDetailedGuide extends React.Component<PropsType> {
   contributions: Contribution[] = []
 
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   renderContributionTableRow = () => {
       return (
           this.contributions && this.contributions.map((contribution) => {

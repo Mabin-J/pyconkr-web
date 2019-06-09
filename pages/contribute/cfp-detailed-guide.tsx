@@ -165,6 +165,11 @@ const getDescStr = (desc: IntlTextType) => {
 @inject('stores')
 @observer
 export default class CFPDetailedGuide extends React.Component<{ stores: StoresType }> {
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   render() {
     const { stores } = this.props
     const { presentationProposalStartAt,  presentationProposalFinishAt} = stores.scheduleStore.schedule

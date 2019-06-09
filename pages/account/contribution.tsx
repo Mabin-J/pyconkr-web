@@ -36,7 +36,6 @@ class ContributionPage extends React.Component<PropsType> {
       if (!stores.cfpStore.isInitialized) await stores.cfpStore.initialize()
       if (!stores.sponsorStore.isInitialized) await stores.sponsorStore.initialize()
       if (!stores.scheduleStore.isInitialized) await stores.scheduleStore.initialize()
-      
     }
 
     renderContributionTableRow = () => {
@@ -64,7 +63,7 @@ class ContributionPage extends React.Component<PropsType> {
     const { stores } = this.props
     const { sponsorStore, cfpStore, scheduleStore } = stores
     const { schedule } = scheduleStore
-    
+
     this.contributions = [{
       title: '발표 제안',
       intlKey: 'contribute.overview.table.talk',
@@ -107,6 +106,7 @@ class ContributionPage extends React.Component<PropsType> {
         intlKey: 'common.status.conferenceDays'
       }
     }]
+
     return (
       <PageTemplate
         header={<Header title='제안 및 신청 내역 :: 파이콘 한국 2019' intlKey='contribution.pageTitle'/>}

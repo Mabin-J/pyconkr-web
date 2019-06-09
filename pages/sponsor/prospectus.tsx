@@ -27,6 +27,11 @@ export class Prospectus extends React.Component<PropsType> {
     }
   }
 
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   render() {
     const { stores, t } = this.props
     const { sponsorProposalStartAt,  sponsorProposalFinishAt} = stores.scheduleStore.schedule

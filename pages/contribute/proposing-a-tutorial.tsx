@@ -21,6 +21,11 @@ import { StoresType } from '../_app'
 @inject('stores')
 @observer
 export default class CFPDetailedGuide extends React.Component<{ stores: StoresType }> {
+  async componentDidMount() {
+    const { scheduleStore } = this.props.stores
+    if (!scheduleStore.isInitialized) scheduleStore.initialize()
+  }
+
   render() {
     const { tutorialProposalStartAt, tutorialProposalFinishAt, tutorialProposalAnnounceAt } = this.props.stores.scheduleStore.schedule
 
